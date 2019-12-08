@@ -12,6 +12,20 @@ const userSchema = new Schema({
         required: true,
         unique: [true, "Email has already been registered"]
     },
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Post',
+            require: true,
+        }
+    ],
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment',
+            require: true,
+        }
+    ],
     signup_date: {
         type: Date,
         required: true,
