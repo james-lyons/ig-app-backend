@@ -39,7 +39,7 @@ const indexComments = (req, res) => {
 // Create a Comment
 const createComment = (req, res) => {
     const comment = {
-        author: req.session.currentUser._id,
+        user: req.session.currentUser._id,
         post: req.body.post,
         comment_text: req.body.comment_text,
     };
