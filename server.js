@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 // SECTION User Sessions
-app.use(sessions({
+app.use(session({
     secret: `${ process.env.SECRET }`,
     resave: false,
     saveUninitialized: false
@@ -52,8 +52,8 @@ app.get('/', (req, res) => {
 
 // User Routes
 app.use('/auth', routes.auth)
-app.use('/post', routes.post)
-app.use('/comment', routes.comment)
+// app.use('/post', routes.post)
+// app.use('/comment', routes.comment)
 
 // SECTION Server Listener
 app.listen(PORT, () => console.log(`Listening on port: ${ PORT }`));
