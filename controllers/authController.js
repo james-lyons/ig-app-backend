@@ -67,6 +67,7 @@ const register = (req, res) => {
     });
   });
 };
+
 // POST Login Route
 const login = (req, res) => {
   if (!req.body.email || !req.body.password) {
@@ -109,6 +110,7 @@ const login = (req, res) => {
     });
   });
 };
+
 // POST Logout Route
 const logout = (req, res) => {
   req.session.destroy(err => {
@@ -120,6 +122,7 @@ const logout = (req, res) => {
     res.sendStatus(200);
   });
 };
+
 // GET Verify User Route
 const verify = (req, res) => {
   if (!req.session.currentUser)
@@ -131,6 +134,7 @@ const verify = (req, res) => {
       message: `Current user verified. User ID = ${req.session.currentUser.id}`
     });
 };
+
 module.exports = {
   register,
   login,
