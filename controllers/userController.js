@@ -1,5 +1,5 @@
 const db = require("../models");
-const validate = require("../validation/userUpdate");
+const validate = require("../validation/register");
 const path = require("path");
 const fs = require("fs");
 

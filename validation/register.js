@@ -6,6 +6,7 @@ module.exports = (
         password,
         password2
     }) => {
+        
         let errors = [];
 
         if (!username) {
