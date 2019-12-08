@@ -50,9 +50,30 @@ const createComment = (req, res) => {
             message: 'Something went wrong, please try again.'
         });
 
+        db.Post.findById(req.body.post_id, (err, foundPost) => {
+            if (err) return res.status(500).json({
+                status: 500,
+                message: 'Something went wrong, please try again.'
+            });
+            foundPost.comments.push(createdComment);
+            foundPost.save();
+        });
 
-    })
-}
+        db.User.findById(req.session.currentUser._id, (err, foundUser) => {
+            if (err) return res.status(500).json({
+                status: 500,
+                message: 'Something went wrong, please try again.'
+            });
+            foundUser.comments.push(createdComment._id);
+            foundUser.save();
+        });
+
+        res.status(201).json({
+            status: 201,
+            message: 'Comment successfully created.',
+        });
+    });
+};
 
 // Edit a Comment
 const editComment = (req, res) => {
