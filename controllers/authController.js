@@ -48,7 +48,8 @@ const register = (req, res) => {
           username: req.body.username,
           email: req.body.email,
           profile_picture: req.body.profile_picture,
-          password: hash
+          password: hash,
+          password2: hash
         };
         db.User.create(newUser, (err, savedUser) => {
           if (err) {
@@ -70,6 +71,7 @@ const register = (req, res) => {
 
 // POST Login Route
 const login = (req, res) => {
+  console.log(req.body)
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
@@ -89,6 +91,8 @@ const login = (req, res) => {
         .json({ status: 400, message: "Username or password is incorrect" });
     
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
+      console.log(req.body)
+      console.log(foundUser)
       if (err)
         return res
           .status(500)
@@ -98,7 +102,7 @@ const login = (req, res) => {
           });
       if (isMatch) {
         req.session.loggedIn = true;
-        req.session.currentUser = { id: foundUser._id };
+        req.session.currentUser = { _id: foundUser._id };
         return res
           .status(200)
           .json({ status: 200, message: "Success", id: foundUser._id });
@@ -106,7 +110,7 @@ const login = (req, res) => {
         return res
           .status(400)
           .json({ status: 400, message: "Username or password is incorrect" });
-      }
+      };
     });
   });
 };
