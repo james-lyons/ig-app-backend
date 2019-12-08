@@ -4,21 +4,21 @@ const path = require("path");
 const fs = require("fs");
 
 //GET get current user
-const showCurrent = (req, res) => {
-  db.User.findById(
-    req.session.currentUser.id,
-    { password: 0, __v: 0 },
-    (err, foundUser) => {
-      if (err)
-        return res.status(500).json({
-          status: 500,
-          message: "Something went wrong. Please try again"
-        });
+// const showCurrent = (req, res) => {
+//   db.User.findById(
+//     req.session.currentUser.id,
+//     { password: 0, __v: 0 },
+//     (err, foundUser) => {
+//       if (err)
+//         return res.status(500).json({
+//           status: 500,
+//           message: "Something went wrong. Please try again"
+//         });
 
-      res.status(200).json({ status: 200, data: foundUser });
-    }
-  );
-};
+//       res.status(200).json({ status: 200, data: foundUser });
+//     }
+//   );
+// };
 
 //GET get user
 const showUser = (req, res) => {
@@ -45,7 +45,7 @@ const searchUsers = async (req, res) => {
 };
 
 //POST update user
-const update = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
     //find the user
     const user = await db.User.findById(req.session.currentUser.id);
@@ -101,8 +101,8 @@ const update = async (req, res) => {
 };
 
 module.exports = {
-  showCurrent,
+  // showCurrent,
   showUser,
-  update,
-  searchUsers
+  searchUsers,
+  updateUser
 };
