@@ -1,0 +1,11 @@
+{
+  "name": "ig-app-backend",
+  "version": "1.0.0",
+  "description": "Insta clone",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Lyons and Pouya Rezvani",
+  "license": "ISC"
+}
