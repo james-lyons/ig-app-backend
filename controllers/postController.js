@@ -32,7 +32,8 @@ const createPost = (req, res) => {
 
     res.status(201).json({
       status: 201,
-      message: "post successfully created."
+      message: "post successfully created.",
+      data: createdPost
     });
   });
 };

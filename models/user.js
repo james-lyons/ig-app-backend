@@ -12,6 +12,14 @@ const userSchema = new Schema({
         required: true,
         unique: [true, "Email has already been registered"]
     },
+    profile_picture: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
     posts: [
         {
             type: Schema.Types.ObjectId,
@@ -31,10 +39,6 @@ const userSchema = new Schema({
         required: true,
         default: new Date
     },
-    profile_picture: {
-        type: String,
-        required: true
-    }
 });
 
 const User = mongoose.model('User', userSchema);
