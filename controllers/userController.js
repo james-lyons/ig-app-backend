@@ -34,14 +34,26 @@ const showUser = (req, res) => {
 };
 
 //GET search users
-const searchUsers = async (req, res) => {
-  const query = new RegExp(".*" + req.params.query + ".*");
-  const users = await db.User.find(
-    { username: query },
-    { password: 0, __v: 0 }
-  );
+const indexUsers = async (req, res) => {
+  // const query = new RegExp(".*" + req.params.query + ".*");
+  // const users = await db.User.find(
+  //   { username: query },
+  //   { password: 0, __v: 0 }
+  // );
 
-  res.json({ users: users });
+  // res.json({ users: users });
+  db.User.find({}, (err, foundUsers) => {
+    if (err) return res.status(500).json({
+      status: 500,
+      message: 'Something went wrong, please try again.'
+    });
+
+    res.status(200).json({
+      status: 200,
+      message: 'Users successfully found.',
+      data: foundUsers
+    });
+  });
 };
 
 //POST update user
@@ -103,6 +115,6 @@ const updateUser = async (req, res) => {
 module.exports = {
   // showCurrent,
   showUser,
-  searchUsers,
+  indexUsers,
   updateUser
 };

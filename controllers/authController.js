@@ -83,11 +83,11 @@ const login = (req, res) => {
           status: 500,
           message: "Something went wrong. Please try again"
         });
-    if (!foundUser) {
+    if (!foundUser) 
       return res
         .status(400)
         .json({ status: 400, message: "Username or password is incorrect" });
-    }
+    
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
       if (err)
         return res
