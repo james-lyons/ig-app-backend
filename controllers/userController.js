@@ -3,23 +3,6 @@ const validate = require("../validation/register");
 const path = require("path");
 const fs = require("fs");
 
-//GET get current user
-// const showCurrent = (req, res) => {
-//   db.User.findById(
-//     req.session.currentUser.id,
-//     { password: 0, __v: 0 },
-//     (err, foundUser) => {
-//       if (err)
-//         return res.status(500).json({
-//           status: 500,
-//           message: "Something went wrong. Please try again"
-//         });
-
-//       res.status(200).json({ status: 200, data: foundUser });
-//     }
-//   );
-// };
-
 //GET get user
 const showUser = (req, res) => {
   db.User.findById(req.params.id, { password: 0, __v: 0 }, (err, foundUser) => {
@@ -35,13 +18,6 @@ const showUser = (req, res) => {
 
 //GET search users
 const indexUsers = async (req, res) => {
-  // const query = new RegExp(".*" + req.params.query + ".*");
-  // const users = await db.User.find(
-  //   { username: query },
-  //   { password: 0, __v: 0 }
-  // );
-
-  // res.json({ users: users });
   db.User.find({}, (err, foundUsers) => {
     if (err) return res.status(500).json({
       status: 500,
@@ -70,7 +46,7 @@ const updateUser = async (req, res) => {
     }
 
     //update user
-    user.name = req.body.name;
+    user.username = req.body.username;
     user.email = req.body.email;
 
     //check the updated image file
