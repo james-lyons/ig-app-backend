@@ -14,7 +14,7 @@ const followUser = (req, res) => {
           status: 500,
           message: "Something went wrong, please try again"
         });
-      foundUser.following.push(req.params.id);
+      foundUser.following.push(req.body.followerid);
       foundUser.save();
     }
   );
