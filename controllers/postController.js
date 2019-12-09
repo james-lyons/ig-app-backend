@@ -95,7 +95,7 @@ const editPost = (req, res) => {
 // Delete a Post
 
 const deletePost = (req, res) => {
-  db.Post.findByIdAndDelete(req.params.post_id, (err, deletedPost) => {
+  db.Post.findByIdAndDelete(req.params.id, (err, deletedPost) => {
     if (err)
       return res.status(500).json({
         status: 500,

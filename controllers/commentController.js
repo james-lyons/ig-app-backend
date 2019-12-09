@@ -77,7 +77,7 @@ const createComment = (req, res) => {
 
 // Edit a Comment
 const editComment = (req, res) => {
-    db.Comment.findByIdAndUpdate(req.params.id, (err, editedComment) => {
+    db.Comment.findByIdAndUpdate(req.params.id, req.body, (err, editedComment) => {
         if (err) return res.status(500).json({
             status: 500,
             message: 'Something went wrong, please try again.'
@@ -85,7 +85,7 @@ const editComment = (req, res) => {
 
         res.status(202).json({
             status: 200,
-            message: 'Comment successfully edited'
+            message: 'Comment successfully edited',
         });
     });
 };
