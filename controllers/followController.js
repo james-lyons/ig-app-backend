@@ -54,7 +54,26 @@ const unfollowUser = (req, res) => {
   });
 };
 
+const likePost = (req, res) => {
+  db.Post.findById(req.params.id, (err, foundPost) => {
+    if (err)
+      return res.status(500).json({
+        status: 500,
+        message: "Something went wrong, please try again"
+      });
+    const currentUserLike = req.session.currentUser.id;
+    foundPost.likes.push(currentUserLike);
+    foundPost.save();
+
+    res.status(200).json({
+      message: "Liked Successfully",
+      likes: foundPost.likes
+    });
+  });
+};
+
 module.exports = {
   followUser,
-  unfollowUser
+  unfollowUser,
+  likePost
 };
