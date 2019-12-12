@@ -1,0 +1,42 @@
+[
+    {
+        "post_text": "This is my post 1",
+        "image": "https://images.unsplash.com/photo-1576098195881-80c02acd9bd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 2",
+        "image": "https://images.unsplash.com/photo-1576162742874-89de21394a3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 3",
+        "image": "https://images.unsplash.com/photo-1576054595984-a4b05c80e70b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 4",
+        "image": "https://images.unsplash.com/photo-1576078767295-5d84f7a538fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 5",
+        "image": "https://images.unsplash.com/photo-1576164842740-5cfb53157345?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 6",
+        "image": "https://images.unsplash.com/photo-1576169899988-06de74b76e70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 7",
+        "image": "https://images.unsplash.com/photo-1576154358200-4b0dc5b84e7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 8",
+        "image": "https://images.unsplash.com/photo-1576110598658-096ae24cdb97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 9",
+        "image": "https://images.unsplash.com/photo-1576157655004-1e954752ae8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+        "post_text": "This is my post 10",
+        "image": "https://images.unsplash.com/photo-1576164172813-f918b90d5c3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    }
+]

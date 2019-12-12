@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 // SECTION User Sessions
 app.use(
   session({
-    secret: `${process.env.SECRET}`,
+    secret: `${ process.env.SECRET }`,
     resave: false,
     saveUninitialized: false
   })
