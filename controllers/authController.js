@@ -12,38 +12,30 @@ const register = (req, res) => {
   // Verify Account Does Not Already Exist
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err)
-      return res
-        .status(500)
-        .json({
-          status: 500,
-          message: "Something went wrong. Please try again"
-        });
+      return res.status(500).json({
+        status: 500,
+        message: "Something went wrong. Please try again"
+      });
     if (foundUser)
-      return res
-        .status(400)
-        .json({
-          status: 400,
-          message: "Email address has already been registered. Please try again"
-        });
+      return res.status(400).json({
+        status: 400,
+        message: "Email address has already been registered. Please try again"
+      });
     // Generate Salt (Asynchronous callback version)
     bcrypt.genSalt(10, (err, salt) => {
       if (err)
-        return res
-          .status(500)
-          .json({
-            status: 500,
-            message: "Something went wrong. Please try again"
-          });
+        return res.status(500).json({
+          status: 500,
+          message: "Something went wrong. Please try again"
+        });
       // if (err) throw err;
       // Hash User Password
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         if (err)
-          return res
-            .status(500)
-            .json({
-              status: 500,
-              message: "Something went wrong. Please try again"
-            });
+          return res.status(500).json({
+            status: 500,
+            message: "Something went wrong. Please try again"
+          });
         const newUser = {
           username: req.body.username,
           email: req.body.email,
@@ -54,12 +46,10 @@ const register = (req, res) => {
         db.User.create(newUser, (err, savedUser) => {
           if (err) {
             if (err.code === 11000)
-              return res
-                .status(400)
-                .json({
-                  status: 400,
-                  message: "Username already exists. Please try another one"
-                });
+              return res.status(400).json({
+                status: 400,
+                message: "Username already exists. Please try another one"
+              });
             return res.status(500).json({ status: 500, message: err });
           }
           res.status(201).json({ status: 201, message: "success" });
@@ -71,7 +61,7 @@ const register = (req, res) => {
 
 // POST Login Route
 const login = (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
@@ -79,38 +69,34 @@ const login = (req, res) => {
   }
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err)
-      return res
-        .status(500)
-        .json({
-          status: 500,
-          message: "Something went wrong. Please try again"
-        });
-    if (!foundUser) 
+      return res.status(500).json({
+        status: 500,
+        message: "Something went wrong. Please try again"
+      });
+    if (!foundUser)
       return res
         .status(400)
         .json({ status: 400, message: "Username or password is incorrect" });
-    
+
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
-      console.log(req.body)
-      console.log(foundUser)
+      console.log(req.body);
+      console.log(foundUser);
       if (err)
-        return res
-          .status(500)
-          .json({
-            status: 500,
-            message: "Something went wrong. Please try again"
-          });
+        return res.status(500).json({
+          status: 500,
+          message: "Something went wrong. Please try again"
+        });
       if (isMatch) {
         req.session.loggedIn = true;
         req.session.currentUser = { _id: foundUser._id };
         return res
           .status(200)
-          .json({ status: 200, message: "Success", id: foundUser._id });
+          .json({ status: 200, message: "Success", data: foundUser });
       } else {
         return res
           .status(400)
           .json({ status: 400, message: "Username or password is incorrect" });
-      };
+      }
     });
   });
 };
@@ -131,12 +117,10 @@ const logout = (req, res) => {
 const verify = (req, res) => {
   if (!req.session.currentUser)
     return res.status(401).json({ status: 401, message: "unauthorized" });
-  res
-    .status(200)
-    .json({
-      status: 200,
-      message: `Current user verified. User ID = ${req.session.currentUser.id}`
-    });
+  res.status(200).json({
+    status: 200,
+    message: `Current user verified. User ID = ${req.session.currentUser.id}`
+  });
 };
 
 module.exports = {
